@@ -1,214 +1,247 @@
 @font-face {
-    font-family: "Creepy";
-    src: url("Assets/Fonts/Creepy.woff") format("woff"),
-         url("Assets/Fonts/Creepy.woff2") format("woff2");
-}
-
-@font-face {
-    font-family: "Lunacy";
-    src: url("Assets/Fonts/Lunacy.woff") format("woff"),
-         url("Assets/Fonts/Lunacy.woff2") format("woff2");
+    font-family: "Marker Felt";
+    src: url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.eot");
+    src: url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.svg#Marker Felt") format("svg");
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  min-height: 100vh;
-  cursor: url(Assets/Cursors/Ghost.cur), auto;
-  font-family: Lunacy;
+    min-height: 100vh;
 }
 
 body {
-  margin: 0;
-  background: radial-gradient(#9D5900, #3D2200);
+    margin: 0;
+    background: radial-gradient(red, #3B2314);
 }
 
 .page-title {
-  color: #FF6D00;
-  font-family: Creepy, serif;
-  font-weight: normal;
-  text-align: center;
-  font-size: 6em;
+    color: black;
+    font-family: Marker Felt, serif;
+    font-weight: normal;
+    text-shadow: 0px 3px 1px white, 2px 0px 1px white, 0px -1px 1px white, -2px 0px 1px white;
+    text-align: center;
+    font-size: 2em;
 }
 
 .game-info-container {
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: space-between;
+    position: absolute;
+    width: 90vw;
+    left: 5%;
+    top: 10px;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    /*justify-content: space-between;*/
+    line-height: 40px;
+    /*background-color: green;*/
 }
 
 .game-info {
-  color: #FFBB89;
-  font-size: 4em;
+    font-family: Marker Felt, serif;
+    font-weight: bold;
+    color: white;
+    font-size: 1em; /* default size, 1em = 16px in most browser defaults */
 }
 
 .game-container {
-  margin: 50px auto;
-  display: grid;
-  grid-template-columns: repeat(6, auto);
-  grid-gap: 10px;
-  justify-content: center;
-  perspective: 500px;
+    display: grid;
+    grid-gap: 8px;
+    justify-content: center;
+    align-items: center;
+    perspective: 500px;
 }
 
 .card {
-  position: relative;
-  cursor: url("Assets/Cursors/GhostHover.cur"), auto;
-  height: 175px;
-  width: 125px;
-}
-
-.card-face {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  border-width: 1px;
-  border-style: solid;
-  overflow: hidden;
-  transition: transform 500ms ease-in-out;
-  backface-visibility: hidden;
+    position: relative;
+    min-width: 50px;
+    aspect-ratio: 1;
 }
 
 .card.visible .card-back {
-  transform: rotateY(-180deg); 
+    transform: rotateY(-180deg);
 }
 
 .card.visible .card-front {
-  transform: rotateY(0); 
+    transform: rotateY(0);
 }
 
-.card.matched .card-front .card-value {
-  animation: dance 1s linear infinite 500ms;
-}
-
-.card-back {
-  background-color: black;
-  border-color: #FF6D00;
-  transform: rotateY(0); 
-}
-
-.cob-web {
-  position: absolute;
-  transition: width 100ms ease-in-out, height 100ms ease-in-out;
-  width: 47px;
-  height: 47px;
-}
-
-.card-face:hover .cob-web {
-  width: 52px;
-  height: 52px;
-}
-
-.cob-web-top-left {
-  transform: rotate(270deg);
-  top: 0;
-  left: 0;
-}
-
-.cob-web-top-right {
-  top: 0;
-  right: 0;
-}
-
-.cob-web-bottom-left {
-  transform: rotate(180deg);
-  bottom: 0;
-  left: 0;
-}
-
-.cob-web-bottom-right {
-  transform: rotate(90deg);
-  bottom: 0;
-  right: 0;
-}
-
-.spider {
-  align-self: flex-start;
-  transition: transform 100ms ease-in-out;
-  transform: translateY(-10px);
-}
-
-.card-back:hover .spider {
-  transform: translateY(0);
-}
-
-.card-value {
-  position: relative;
-  transition: transform 100ms ease-in-out;
-  transform: scale(.9);
-}
-
-.card-front:hover .card-value {
-  transform: scale(1);
-}
-
-.card-front {
-  background-color: #FFBB89;
-  border-color: #333;
-  transform: rotateY(180deg);
+.card.matched .card-value {
+    animation: dance 1s linear infinite 500ms;
 }
 
 .overlay-text {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 100;
-  display: none;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: #FF6D00;
-  font-family: Creepy, serif;
-  transition: background-color 500ms, font-size 500ms;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 200;
+    color: #FF6D00;
+    font-family: Marker Felt, serif;
 }
 
 .overlay-text-small {
-  font-size: .3em;
+    font-size: .3em;
 }
 
 .overlay-text.visible {
-  display: flex;
-  animation: overlay-grow 500ms forwards;
-}
-
-@keyframes dance {
-  0%, 100% {
-    transform: rotate(0)
-  }
-  25% {
-    transform: rotate(-30deg)
-  }
-  75% {
-    transform: rotate(30deg)
-  }
+    display: flex;
+    flex-direction: column;
+    animation: overlay-grow 500ms forwards;
 }
 
 @keyframes overlay-grow {
-  from {
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 0;
-  }
-  to {
-    background-color: rgba(0, 0, 0, .8);
-    font-size: 10em;
-  }
+    from {
+        background-color: rgba(0,0,0,0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(0, 0, 0, .8);
+        font-size: 10em;
+    }
 }
 
-@media (max-width: 600px) {
-  .game-container {
-    grid-template-columns: repeat(2, auto)
-  }
+@keyframes dance {
+    0%, 100% {
+        transform: rotate(0);
+    }
+    25% {
+        transform: rotate(-20deg);
+    }
+    75% {
+        transform: rotate(20deg);
+    }
+}
 
-  .game-info-container {
-    flex-direction: column;
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
     align-items: center;
-  }
+    overflow: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    border-width: 2px;
+    border-style: solid;
+    transition: transform 500ms ease-in-out;
+}
+
+.card-back {
+    background-image: url(Assets/Images/CardBackground.png);
+    background-size: 100% 100%;
+    background-color:rgba(0, 0, 0, 0.5);
+    /*background-color: black;*/
+    border-color: #6D6E70;
+}
+
+.card-front {
+    background-color: #ffbb89;
+    border-color: #333333;
+    transform: rotateY(180deg);
+}
+
+* {
+    image-rendering: optimizeSpeed;             /* Older versions of FF */
+    image-rendering: -moz-crisp-edges;          /* FF 6.0+ */
+    image-rendering: -webkit-optimize-contrast; /* Webkit (non standard naming) */
+    image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
+    image-rendering: crisp-edges;               /* Possible future browsers. */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE (non standard naming) */
+}
+
+.card-value {
+    height: 100%;
+    width: 100%;
+    min-width: 100px;
+    min-height: 100px;
+    transform: scale(.9);
+    transition: transform 100ms ease-in-out;
+}
+
+.card-front:hover .card-value {
+    transform: scale(1);
+}
+
+.card-corner {
+    position: absolute;
+    width: 35%;
+    height: 35%;
+    transition: width 100ms ease-in-out, height 100ms ease-in-out;
+}
+
+.card-face:hover .card-corner {
+    width: 38%;
+    height: 38%;
+}
+
+.card-corner-top-left {
+    transform: rotate(270deg);
+    top: 0;
+    left: 0;
+}
+
+.card-corner-top-right {
+    top: 0;
+    right: 0;
+}
+
+.card-corner-bottom-left {
+    transform: rotate(180deg);
+    bottom: 0;
+    left: 0;
+}
+
+.card-corner-bottom-right {
+    transform: rotate(90deg);
+    bottom: 0;
+    right: 0;
+}
+
+.backIcon {
+    align-self: flex-start;
+    width: 100%;
+    height: 100%;
+    transform: scale(.9);
+    transition: transform 100ms ease-in-out;
+}
+
+.card-back:hover .backIcon {
+    transform: scale(1);
+}
+
+@media only screen and (orientation: landscape) {
+    .game-container {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90vw;
+        grid-template-columns: repeat(6, minmax(50px, 1fr));
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    .game-container {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        height: 82vh;
+        width: 40vh;
+        grid-template-columns: repeat(3, minmax(50px, 1fr));
+    }
 }
