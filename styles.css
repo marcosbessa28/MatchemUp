@@ -61,6 +61,7 @@ body {
 .card {
     position: relative;
     min-width: 50px;
+    min-height: 50px;
     aspect-ratio: 1;
 }
 
