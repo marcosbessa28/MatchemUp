@@ -242,6 +242,7 @@ body {
         top: 50%;
         transform: translate(-50%, -50%);
         height: 82vh;
+        min-height: -webkit-fill-available;
         width: 40vh;
         grid-template-columns: repeat(3, minmax(50px, 1fr));
     }
