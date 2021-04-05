@@ -25,7 +25,7 @@ html {
 
 body {
     margin: 0;
-    /* background: radial-gradient(red, #3B2314); */
+    background: radial-gradient(red, #3B2314);
 }
 
 .page-title {
@@ -151,9 +151,9 @@ body {
 
 /* MOBILE BROWSERS */
 @media (hover: none) {
-    /*.card-face {
+    .card-face {
         transition: opacity 1ms linear;
-    }*/
+    }
 
     .card-front {
         opacity: 0;
@@ -163,11 +163,9 @@ body {
         opacity: 0;
     }
 
-    /*
     .card.visible .card-front {
         opacity: 1;
     }
-    */
 }
 
 .card-back {
