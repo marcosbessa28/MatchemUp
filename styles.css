@@ -138,29 +138,42 @@ body {
     border-style: solid;
 }
 
-.card-face {
-    transition: transform 500ms ease-in-out;
-}
-
-/*
+/* COMPUTER BROWSERS */
 @media (hover: hover) {
+    .card.visible .card-front {
+        opacity: 1;
+    }
+
     .card-face {
-        transition: transform 500ms ease-in-out;
+        transition: transform 500ms 0ms ease-in-out, opacity 1ms 500ms linear;
     }
 }
 
+/* MOBILE BROWSERS */
 @media (hover: none) {
+    .card-face {
+        transition: opacity 1ms linear;
+    }
+
+    .card-front {
+        opacity: 0;
+    }
+
     .card.visible .card-back {
-        visibility: hidden;
+        opacity: 0;
+    }
+
+    .card.visible .card-front {
+        opacity: 1;
     }
 }
-*/
 
 .card-back {
     background-image: url(Assets/Images/CardBackground.png);
     background-size: 100% 100%;
     background-color:rgba(0, 0, 0, 0.5);
     border-color: #6D6E70;
+    opacity: 1;
 }
 
 .card-front {
