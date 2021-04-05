@@ -9,7 +9,7 @@ class AudioController {
         this.bgMusic.loop = true;
     }
     startMusic() {
-        this.bgMusic.play();
+        /* this.bgMusic.play(); */
     }
     stopMusic() {
         this.bgMusic.pause();

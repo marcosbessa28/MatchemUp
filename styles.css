@@ -10,6 +10,13 @@
 
 * {
     box-sizing: border-box;
+
+    image-rendering: optimizeSpeed;             /* Older versions of FF */
+    image-rendering: -moz-crisp-edges;          /* FF 6.0+ */
+    image-rendering: -webkit-optimize-contrast; /* Webkit (non standard naming) */
+    image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
+    image-rendering: crisp-edges;               /* Possible future browsers. */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE (non standard naming) */
 }
 
 html {
@@ -38,9 +45,7 @@ body {
     z-index: 100;
     display: grid;
     grid-template-columns: 20% 60% 20%;
-    /*justify-content: space-between;*/
     line-height: 40px;
-    /*background-color: green;*/
 }
 
 .game-info {
@@ -55,22 +60,16 @@ body {
     grid-gap: 8px;
     justify-content: center;
     align-items: center;
-    perspective: 500px;
+    /* perspective: 500px; */
 }
 
 .card {
     position: relative;
+    height: 100%;
+    width: 100%;
     min-width: 50px;
     min-height: 50px;
     aspect-ratio: 1;
-}
-
-.card.visible .card-back {
-    transform: rotateY(-180deg);
-}
-
-.card.visible .card-front {
-    transform: rotateY(0);
 }
 
 .card.matched .card-value {
@@ -137,30 +136,45 @@ body {
     border-radius: 12px;
     border-width: 2px;
     border-style: solid;
+}
+
+.card-face {
     transition: transform 500ms ease-in-out;
 }
+
+/*
+@media (hover: hover) {
+    .card-face {
+        transition: transform 500ms ease-in-out;
+    }
+}
+
+@media (hover: none) {
+    .card.visible .card-back {
+        visibility: hidden;
+    }
+}
+*/
 
 .card-back {
     background-image: url(Assets/Images/CardBackground.png);
     background-size: 100% 100%;
     background-color:rgba(0, 0, 0, 0.5);
-    /*background-color: black;*/
     border-color: #6D6E70;
 }
 
 .card-front {
-    background-color: #ffbb89;
+    background-color: #ffa666;
     border-color: #333333;
     transform: rotateY(180deg);
 }
 
-* {
-    image-rendering: optimizeSpeed;             /* Older versions of FF */
-    image-rendering: -moz-crisp-edges;          /* FF 6.0+ */
-    image-rendering: -webkit-optimize-contrast; /* Webkit (non standard naming) */
-    image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
-    image-rendering: crisp-edges;               /* Possible future browsers. */
-    -ms-interpolation-mode: nearest-neighbor;   /* IE (non standard naming) */
+.card.visible .card-back {
+    transform: rotateY(-180deg);
+}
+
+.card.visible .card-front {
+    transform: rotateY(0);
 }
 
 .card-value {
@@ -242,7 +256,6 @@ body {
         top: 50%;
         transform: translate(-50%, -50%);
         height: 82vh;
-        min-height: -webkit-fill-available;
         width: 40vh;
         grid-template-columns: repeat(3, minmax(50px, 1fr));
     }
