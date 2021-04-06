@@ -126,7 +126,7 @@ class MatchemUp {
     victory() {
         clearInterval(this.countDown);
         this.audioController.victory();
-        this.points.innerText = Math.floor( (this.countDown / this.totalTime + 18 / this.totalClicks) * 1000 );
+        this.points.innerText = Math.floor( (this.countDown / this.totalTime + 18 / this.totalClicks) * Math.PI * 1000 );
         document.getElementById('victory-text').classList.add('visible');
     }
     shuffleCards() {

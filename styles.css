@@ -66,8 +66,8 @@ body {
     position: relative;
     height: 100%;
     width: 100%;
-    min-width: 50px;
-    min-height: 50px;
+    /*min-width: 20px;
+    min-height: 20px;*/
     aspect-ratio: 1;
 }
 
@@ -283,10 +283,10 @@ body {
     .game-container {
         position: absolute;
         left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        height: 82vh;
-        width: 40vh;
+        top: 10%;
+        transform: translate(-50%, 0);
+        height: 72vh;
+        width: 35vh;
         grid-template-columns: repeat(3, minmax(50px, 1fr));
     }
 }
