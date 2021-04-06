@@ -38,6 +38,7 @@ class MatchemUp {
         this.timeRemaining = totalTime;
         this.timer = document.getElementById('time-remaining');
         this.ticker = document.getElementById('flips');
+        this.points = document.getElementById('points');
         this.audioController = new AudioController();
     }
     startGame() {
@@ -125,6 +126,7 @@ class MatchemUp {
     victory() {
         clearInterval(this.countDown);
         this.audioController.victory();
+        this.points.innerText = Math.floor( (this.countDown / this.totalTime + 18 / this.totalClicks) * 1000 );
         document.getElementById('victory-text').classList.add('visible');
     }
     shuffleCards() {
@@ -149,9 +151,6 @@ function ready() {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible');
             game.startGame();
-            
-            /*let audioController = new AudioController();
-            audioController.startMusic();*/
         })
     });
 
