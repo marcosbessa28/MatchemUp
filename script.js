@@ -184,19 +184,26 @@ function ready() {
     let game = new MatchemUp(100, cards);
 
     // Get the name of the collection from the URL. Example: ...index.html?collection=Avengers1
+    let indexArray = [1,2,3,4,5,6,7,8,9];
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    let collection = urlParams.get('collection')
+    let collection = urlParams.get('collection');
     if( collection == null )
-        collection = "Avengers1";
+        collection = "TM-Avengers";
+    let size = urlParams.get('size');
+    if( size != null ) {
+        let totalIndexArray = getIntArraySuffled(size);
+        indexArray = totalIndexArray.slice(0,10);
+    }
 
     // Load images onto the cards
     let cardValues = Array.from(document.getElementsByClassName('card-value'));
-    let i=1;
+    let i=0;
     let copy = false;
     cardValues.forEach(cardValues => {
-        index = i < 10 ? '0'+i : i;
-        cardValues.src = `Assets/Teddimus/${collection}/${index}.png`;
+        index = indexArray[i];
+        indexTxt = index < 10 ? '0'+index : index;
+        cardValues.src = `Assets/Collections/${collection}/${indexTxt}.png`;
         if( copy ) {
             copy = false;
             i++;
@@ -217,6 +224,30 @@ function ready() {
             game.flipCard(card);
         });
     });
+}
+
+function getIntArraySuffled(length) {
+    let array = generateIntArray(length);
+    return shuffleArray(array);
+}
+
+function generateIntArray(length) {
+    let array = Array(length);
+    for(let i=0; i<length; i++) {
+        array[i] = i+1;
+    }
+    return array;
+}
+
+function shuffleArray(numArray)
+{
+    for(let i = numArray.length - 1; i > 0; i--) {
+        let randIndex = Math.floor(Math.random() * (i+1));
+        let tmp = numArray[i];
+        numArray[i] = numArray[randIndex];
+        numArray[randIndex] = tmp;
+    }
+    return numArray;
 }
 
 function formatTime(totalSeconds, incHours) {
