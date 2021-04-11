@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
     <link href="styles.css" rel="stylesheet">
     <script src="script.js" async></script>
     <title>Match'em Up</title>
 </head>
 <body>
-    <div class="overlay-text visible">START</div>
+    <div class="overlay-text visible">PLAY</div>
+    <div id="countdown-text" class="countdown-text">3</div>
     <div id="game-over-text" class="overlay-text">
         GAME OVER
         <span class="overlay-text-small">RESTART</span>
@@ -14,7 +15,7 @@
     <div id="victory-text" class="overlay-text">
         <span class="overlay-text-small">POINTS:</span>
         <span id="points">0000</span>
-        <span class="overlay-text-small">PLAY AGAIN?</span>
+        <span class="overlay-text-small">PLAY AGAIN</span>
     </div>
     <div class="game-info-container">
         <div class="game-info" style="text-align: left;">
@@ -36,7 +37,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/01.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -48,7 +49,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/01.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -60,7 +61,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/02.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -72,7 +73,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/02.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -84,7 +85,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/03.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -96,7 +97,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/03.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -108,7 +109,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/04.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -120,7 +121,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/04.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -132,7 +133,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/05.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -144,7 +145,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/05.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -156,7 +157,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/06.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -168,7 +169,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/06.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -180,7 +181,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/07.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -192,7 +193,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/07.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -204,7 +205,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/08.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -216,7 +217,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/08.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -228,7 +229,7 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/09.png">
+                <img class="card-value">
             </div>
         </div>
         <div class="card">
@@ -240,9 +241,12 @@
                 <img class="backIcon" src="Assets/Images/CardTeddimus.png">
             </div>
             <div class="card-front card-face">
-                <img class="card-value" src="Assets/Teddimus/09.png">
+                <img class="card-value">
             </div>
         </div>
     </div>
 </body>
+<footer>
+    <p class="copyright">©2021 28Games & Younamit by Marcos Bessa</p>
+</footer>
 </html>

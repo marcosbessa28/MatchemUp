@@ -39,6 +39,7 @@ class MatchemUp {
         this.timer = document.getElementById('time-remaining');
         this.ticker = document.getElementById('flips');
         this.points = document.getElementById('points');
+        this.countDownText = document.getElementById('countdown-text');
         this.audioController = new AudioController();
     }
     startGame() {
@@ -47,13 +48,33 @@ class MatchemUp {
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
         this.busy = true;
-        setTimeout(() => {
-            this.audioController.startMusic();
-            this.shuffleCards();
-            this.countDown = this.startCountDown();
-            this.busy = false;
-        }, 500);
+        this.shuffleCards();
         this.hideCards();
+        this.showCards();
+        
+        this.countDownText.classList.add("visible");
+        setTimeout(() => {
+            this.countDownText.classList.remove("visible");
+            setTimeout(() => {
+                this.countDownText.innerText = "2";
+                this.countDownText.classList.add("visible");
+                setTimeout(() => {
+                    this.countDownText.classList.remove("visible");
+                    setTimeout(() => {
+                        this.countDownText.innerText = "1";
+                        this.countDownText.classList.add("visible");
+                        setTimeout(() => {
+                            this.hideCards();
+                            this.audioController.startMusic();
+                            this.countDown = this.startCountDown();
+                            this.busy = false;
+                            this.countDownText.classList.remove("visible");
+                        }, 1000);
+                    }, 100);
+                }, 900);
+            }, 100);
+        }, 900);
+
         this.updateTimer();
         this.ticker.innerText = this.totalClicks;
     }
@@ -61,6 +82,11 @@ class MatchemUp {
         this.cardsArray.forEach(card => {
             card.classList.remove('visible');
             card.classList.remove('matched');
+        });
+    }
+    showCards() {
+        this.cardsArray.forEach(card => {
+            card.classList.add('visible');
         });
     }
     flipCard(card) {
@@ -126,7 +152,7 @@ class MatchemUp {
     victory() {
         clearInterval(this.countDown);
         this.audioController.victory();
-        this.points.innerText = Math.floor( (this.countDown / this.totalTime + 18 / this.totalClicks) * Math.PI * 10000 );
+        this.points.innerText = Math.floor( (this.timeRemaining / this.totalTime + 18 / this.totalClicks) * Math.PI * 10000 );
         document.getElementById('victory-text').classList.add('visible');
     }
     shuffleCards() {
@@ -142,10 +168,42 @@ class MatchemUp {
     }
 }
 
+function dataURItoBlob(dataURI, mime) {
+    var byteString = window.atob(dataURI);
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+    }
+   var blob = new Blob([ia], { type: mime });
+   return blob;
+}
+
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
     let game = new MatchemUp(100, cards);
+
+    // Get the name of the collection from the URL. Example: ...index.html?collection=Avengers1
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let collection = urlParams.get('collection')
+    if( collection == null )
+        collection = "Avengers1";
+
+    // Load images onto the cards
+    let cardValues = Array.from(document.getElementsByClassName('card-value'));
+    let i=1;
+    let copy = false;
+    cardValues.forEach(cardValues => {
+        index = i < 10 ? '0'+i : i;
+        cardValues.src = `Assets/Teddimus/${collection}/${index}.png`;
+        if( copy ) {
+            copy = false;
+            i++;
+        }
+        else
+            copy = true;
+    });
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {

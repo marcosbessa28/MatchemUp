@@ -2,9 +2,9 @@
     font-family: "Marker Felt";
     src: url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.eot");
     src: url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.eot?#iefix") format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.woff2") format("woff2"),
+    /*url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.woff2") format("woff2"),
     url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.woff") format("woff"),
-    url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.ttf") format("truetype"),*/
     url("//db.onlinewebfonts.com/t/aae462773966100890bdfe4a8188cc0a.svg#Marker Felt") format("svg");
 }
 
@@ -28,12 +28,27 @@ body {
     /* background: radial-gradient(red, #3B2314); */
 }
 
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 15vh;
+    width: 100%;
+    background-color: #00ADEF;
+}
+
+p.copyright {
+    position: absolute;
+    width: 100%;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
 .page-title {
     color: white;
     font-family: Marker Felt, serif;
     font-weight: normal;
     text-align: center;
-    font-size: 2em;
 }
 
 .game-info-container {
@@ -111,6 +126,44 @@ body {
     }
 }
 
+.countdown-text {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 200;
+    color: white;
+    font-family: Marker Felt, serif;
+}
+
+.countdown-text.visible {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: rgba(255,255,255,0);
+    animation: countdown-grow 500ms forwards;
+}
+
+@keyframes countdown-grow {
+    0% {
+        font-size: 0;
+        opacity: 1;
+    }
+    75% {
+        font-size: 20em;
+        opacity: 1;
+    }
+    100% {
+        font-size: 30em;
+        opacity: 0;
+    }
+}
+
 @keyframes dance {
     0%, 100% {
         transform: rotate(0);
@@ -144,6 +197,10 @@ body {
         text-shadow: 0px 3px 1px black, 2px 0px 1px black, 0px -1px 1px black, -2px 0px 1px black;
     }
 
+    p.copyright {
+        font-size: 1em;
+    }
+
     .game-info {
         font-size: 1em;
     }
@@ -162,6 +219,10 @@ body {
     .page-title {
         font-size: 4em;
         text-shadow: 0px 6px 2px black, 4px 0px 2px black, 0px -4px 2px black, -4px 0px 2px black;
+    }
+    
+    p.copyright {
+        font-size: 2em;
     }
 
     .game-info {
