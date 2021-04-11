@@ -195,6 +195,14 @@ function ready() {
         let totalIndexArray = getIntArraySuffled(size);
         indexArray = totalIndexArray.slice(0,10);
     }
+    let bgColor = urlParams.get('color');
+    if( bgColor != null ) {
+        console.log("bgColor = "+bgColor);
+        var cardFronts = document.getElementsByClassName('card-front');
+        for(let i = 0; i < cardFronts.length; i++) {
+            cardFronts[i].style.backgroundColor = '#'+bgColor;
+        }
+    }
 
     // Load images onto the cards
     let cardValues = Array.from(document.getElementsByClassName('card-value'));
